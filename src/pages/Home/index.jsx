@@ -1,16 +1,36 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import io from 'socket.io-client'
 import './index.styl'
+const socket = io(window.location.origin)
 
 const Home = () => {
-  const socket = io(window.location.origin)
+  const [val, $val] = useState('')
+  const [mesages, $mesages] = useState([])
 
   useEffect(() => {
-    socket.on('broadcast', (data) => console.log({ data }))
+    socket.on('connected', (data = []) => $mesages(data))
+    socket.on('sendmessage', (data = []) => $mesages(data))
   }, [])
 
-  return <div id='home'>Home page WORKING!</div>
+  const onSend = () => {
+    socket.emit('getmessage', val)
+    $val('')
+  }
+
+  return (
+    <div id='home'>
+      <div>
+        <input onChange={(e) => $val(e.target.value)} value={val} />
+        <button onClick={onSend}>Send message</button>
+      </div>
+      <ul>
+        {mesages.map((msg, ind) => (
+          <li key={ind}>{msg}</li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 const mapStateToProps = (state) => ({})

@@ -16,12 +16,20 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(appDir))
 app.use(bodyParser.json())
 
-io.on('connection', socket => {
-  socket.broadcast.emit('broadcast', { online: io.engine.clientsCount, message: 'connected' })
+const messages = []
 
-  socket.on('disconnect', () => {
-    socket.broadcast.emit('broadcast', { online: io.engine.clientsCount, message: 'disconnect' })
+io.on('connection', socket => {
+  socket.emit('sendmessage', messages)
+
+  socket.on('getmessage', mes => {
+    messages.push(mes)
+    socket.emit('sendmessage', messages)
+    socket.broadcast.emit('sendmessage', messages)
   })
+
+  // socket.on('disconnect', () => {
+  //   socket.broadcast.emit('broadcast', { online: io.engine.clientsCount, message: 'disconnect' })
+  // })
 })
 
 app.get('/users', (req, res) => {
