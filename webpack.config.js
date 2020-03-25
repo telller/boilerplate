@@ -12,13 +12,13 @@ const alias = {
   'react-dom': '@hot-loader/react-dom',
 }
 
-module.exports = env => ({
+module.exports = () => ({
   entry: ['@babel/polyfill', './src/app.jsx'],
   output: {
     path: path.resolve(__dirname, './'),
     filename: 'dist/bundle.js',
   },
-  devtool: env && env.STAGE === 'prod' ? false : 'source-map',
+  devtool: process.env.STAGE === 'prod' ? false : 'source-map',
   module: {
     rules: [
       {
