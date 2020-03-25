@@ -10,10 +10,9 @@
   "author": "teller",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
-    "build": "webpack -p --env.STAGE prod",
-    "serve": "yarn && yarn build && node -r esm server.js",
-    "docker": "yarn serve",
+    "start": "STAGE=dev webpack-dev-server --hot --inline",
+    "build": "STAGE=prod webpack -p",
+    "serve": "yarn && yarn build && STAGE=prod node -r esm server.js",
     "prettier": "prettier src/**/*.{js,jsx} --write"
   },
   "husky": {
