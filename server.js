@@ -1,6 +1,6 @@
-const express = require('express')
-const http = require('http')
-const path = require('path')
+import express from 'express'
+import http from 'http'
+import path from 'path'
 
 const appDir = path.resolve(__dirname, './')
 const PORT = process.env.PORT || 3000

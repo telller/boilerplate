@@ -12,7 +12,7 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline",
     "build": "webpack -p --env.STAGE prod",
-    "serve": "yarn && yarn build && node server.js",
+    "serve": "yarn && yarn build && node -r esm server.js",
     "docker": "yarn serve",
     "prettier": "prettier src/**/*.{js,jsx} --write"
   },
@@ -51,12 +51,13 @@
     "stylint": "^2.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
-    "webpack-dev-server": "^3.10.3",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack": "^4.42.1"
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "lodash": "^4.17.15",
     "qs": "^6.9.2",
