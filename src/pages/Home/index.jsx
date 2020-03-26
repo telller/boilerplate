@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import io from 'socket.io-client'
 import './index.styl'
-const socket = io(window.location.origin)
+const socket = io({ path: '/ws/chat' })
 
 const Home = () => {
   const [val, $val] = useState('')

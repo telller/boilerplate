@@ -9,7 +9,7 @@ import './config'
 const appDir = path.resolve(__dirname, './')
 const app = express()
 const server = http.createServer(app)
-const io = socketIO(server)
+const io = socketIO(server, { path: '/ws/chat' })
 let db
 
 app.use(bodyParser.urlencoded({ extended: false }))
