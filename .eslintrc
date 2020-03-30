@@ -5,12 +5,6 @@
   },
   "extends": ["standard", "standard-react"],
   "globals": {},
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
   "plugins": ["react"],
   "rules": {
     "comma-dangle": ["error", "always-multiline"],
