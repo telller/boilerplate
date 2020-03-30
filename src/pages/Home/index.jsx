@@ -35,25 +35,3 @@ const Home = () => {
 
 const mapStateToProps = (state) => ({})
 export default connect(mapStateToProps)(Home)
-
-// server {
-//   listen 80;
-//   listen [::]:80;
-//
-//   root /var/www/boilerplate;
-//   index index.html index.htm index.nginx-debian.html;
-//
-//   server_name homeserver-teller.cf;
-//
-//   location / {
-//     proxy_pass http://localhost:8000;
-//     proxy_set_header Host $host;
-//   }
-//
-//   location /ws/ {
-//     proxy_pass http://localhost:8000;
-//     proxy_http_version 1.1;
-//     proxy_set_header Upgrade $http_upgrade;
-//     proxy_set_header Connection "upgrade";
-//   }
-// }
