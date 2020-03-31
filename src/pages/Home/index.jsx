@@ -22,7 +22,7 @@ const Home = () => {
     <div id='home'>
       <div>
         <input onChange={(e) => $val(e.target.value)} value={val} />
-        <button onClick={onSend}>Send messagesasdasdfasdfass</button>
+        <button onClick={onSend}>Send message</button>
       </div>
       <ul>
         {mesages.map((msg, ind) => (
