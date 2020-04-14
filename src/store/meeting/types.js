@@ -1,3 +1,0 @@
-export const GET_MEETING_REQUEST = 'meeting.GET_MEETING_REQUEST'
-export const GET_MEETING_SUCCESS = 'meeting.GET_MEETING_SUCCESS'
-export const GET_MEETING_ERROR = 'meeting.GET_MEETING_ERROR'

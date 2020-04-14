@@ -1,9 +1,7 @@
 // import { notification } from 'antd'
 import { get } from 'lodash'
 
-const getUrl = url => {
-  return `${process.env.BASE_URL}/${url}`
-}
+const getUrl = (url) => `${process.env.BASE_URL}/${url}`
 
 // const makeQuery = (params = {}) => {
 //   const result = Object.keys(params)
@@ -41,6 +39,7 @@ const makeRequest = async (path = '', options = {}, json = true, text, isHeaders
   options = {
     method: 'GET',
     headers: {
+      'X-API-KEY': process.env.X_API_KEY,
       Accept: 'application/json',
     },
     ...options,

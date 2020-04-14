@@ -13,7 +13,7 @@ const alias = {
 }
 
 module.exports = () => ({
-  entry: ['@babel/polyfill', './src/app.jsx'],
+  entry: ['@babel/polyfill', './src/app.tsx'],
   output: {
     path: path.resolve(__dirname, './'),
     filename: 'dist/bundle.js',
@@ -22,13 +22,14 @@ module.exports = () => ({
   module: {
     rules: [
       {
+        test: /\.(ts|tsx?)$/,
+        exclude: [/node_modules/],
+        use: 'ts-loader',
+      },
+      {
         test: /\.(js|jsx?)$/,
         exclude: [/node_modules/],
-        use: [
-          {
-            loader: 'babel-loader',
-          },
-        ],
+        use: 'babel-loader',
       },
       {
         test: /\.styl$/,
@@ -69,7 +70,7 @@ module.exports = () => ({
     new webpack.NamedModulesPlugin(),
   ],
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: alias,
   },
 })

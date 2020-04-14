@@ -1,5 +1,5 @@
-import meeting from './meeting/reducer'
+import models from './models/reducer'
 
 export default {
-  meeting,
+  models,
 }
