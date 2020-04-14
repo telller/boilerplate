@@ -1,28 +1,31 @@
 
 import { getModelsList } from 'store/models/actions'
 import React, { useEffect } from 'react'
+import { MainLayout } from 'components'
 import SingleModel from './SingleModel'
 import { connect } from 'react-redux'
+
 import { Row } from 'antd'
 import './index.styl'
 
-const ModelsList = ({ dispatch, modelsList }) => {
+const ModelsList = ({ globalLoading, dispatch, modelsList }) => {
 
   useEffect(() => {
     !modelsList.length && dispatch(getModelsList())
   }, [])
 
+  const header = <div className='title'>CHOOSE YOUR NEW CAR</div>
   return (
-    <div className='ModelsList'>
-      <div className='title'>CHOOSE YOUR NEW CAR</div>
+    <MainLayout className='ModelsList' spinnning={globalLoading} header={header}>
       <Row gutter={32}>
         {modelsList.map(itm => <SingleModel { ...itm } key={itm.code}/>)}
       </Row>
-    </div>
+    </MainLayout>
   )
 }
 
-const mapStateToProps = state => ({ 
+const mapStateToProps = state => ({
+  globalLoading: state.models.globalLoading,
   modelsList: state.models.modelsList
 })
-export default connect(mapStateToProps)(ModelsList) 
+export default connect(mapStateToProps)(ModelsList)

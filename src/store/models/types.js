@@ -7,3 +7,5 @@ export const GET_MODEL_SUCCESS = 'models.GET_MODEL_SUCCESS'
 export const GET_MODEL_ERROR = 'models.GET_MODEL_ERROR'
 
 export const TOOGLE_GLOBAL_LOADING = 'models.TOOGLE_GLOBAL_LOADING'
+
+export const SET_SELECTED_MODEL = 'models.SET_SELECTED_MODEL'

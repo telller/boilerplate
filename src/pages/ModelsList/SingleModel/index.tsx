@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom'
 import { toCurency } from 'helpers'
 import { Col } from 'antd'
@@ -17,7 +16,7 @@ const SingleModel = ({ code, name, imageUrl, priceFrom }: SingleModelProps) => (
     <Link to={`/models/${code}/trim`}>
       <img src={imageUrl} alt={name} />
       <div className='name'>{name}</div>
-      <div className='price'>{toCurency(Number(priceFrom || 0))}</div>
+      <div className='price'>{toCurency(priceFrom)}</div>
     </Link>
   </Col>
 )
