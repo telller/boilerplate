@@ -2,7 +2,7 @@ import Immutable from 'seamless-immutable'
 import * as types from './types'
 
 const initialState = Immutable({
-  selectedModel: { trip: '', color: '', priceTrip: 0, priceColor: 0, imageUrl: '' },
+  selectedModel: { name: '', price: '', colors: [], selectedColor: { name: '', price: '', imageUrl: '', iconUrl: '' } },
   globalLoading: false,
   currentModel: {},
   modelsList: [],

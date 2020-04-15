@@ -1,14 +1,11 @@
 import { getModelByCode, setSelectedModel } from 'store/models/actions'
-import { MainLayout, CustomButton } from 'components'
+import { SiderEquipment, SiderColor } from './components'
 import React, { useEffect } from 'react'
+import { MainLayout } from 'components'
 import { connect } from 'react-redux'
-import { sortBy, map } from 'lodash'
-import { toCurency } from 'helpers'
-import { minBy } from 'lodash'
 import './index.styl'
 
-const ModelConfigurator = ({ dispatch, match, currentModel, globalLoading, selectedModel }) => {
-
+const ModelConfigurator = ({ dispatch, match, currentModel, globalLoading, selectedModel, location }) => {
 
   console.log({ currentModel, selectedModel })
 
@@ -18,57 +15,30 @@ const ModelConfigurator = ({ dispatch, match, currentModel, globalLoading, selec
     }
   }, [])
 
-  const handleSelectTrim = itm => {
-    const minColor = minBy(itm.colors, 'price')
-    const newSelModel = {
-      imageUrl: minColor.imageUrl,
-      priceColor: minColor.price,
-      color: minColor.name,
-      priceTrip: itm.price,
-      trip: itm.name,
-    }
-    dispatch(setSelectedModel(newSelModel))
-  }
-
-  const handleSelectColor = itm => {
-    const minColor = minBy(itm.colors, 'price')
-    const newSelModel = {
-      imageUrl: minColor.imageUrl,
-      priceColor: minColor.price,
-      color: minColor.name,
-      priceTrip: itm.price,
-      trip: itm.name,
-    }
-    dispatch(setSelectedModel(newSelModel))
-  }
-
-  const header = (
-    <div className='header'>
-      {currentModel.name}
-      <span className='type'>{` ${selectedModel.trip}`}</span>
-      <div className='color'>{selectedModel.color}</div>
-    </div>
-  )
-  const sider = (
-    <div className='sider'>
-      <div className='title'>CHOOSE EQUIPMENT LEVEL</div>
-      {map(sortBy(currentModel.trims, 'price'), itm => (
-        <CustomButton key={itm.name} active={itm.name === selectedModel.trip} onClick={() => handleSelectTrim(itm)}>
-          {itm.name}
-          <div className='price'>{toCurency(itm.price)}</div>
-        </CustomButton>
-      ))}
-    </div>
-  )
+  const setSelModel = selModel => dispatch(setSelectedModel(selModel))
+  const siderProps = { currentModel, selectedModel, setSelModel }
+  const SideBar = location.pathname.includes('trim') ? <SiderEquipment { ...siderProps } /> : <SiderColor { ...siderProps } />
   return (
-    <MainLayout className='ModelConfigurator' spinnning={globalLoading} header={header} sider={sider}>
-      <img className='carPreview' src={selectedModel.imageUrl} alt={selectedModel.trip} />
+    <MainLayout className='ModelConfigurator' spinnning={globalLoading}>
+      <div className='contentWrapper'>
+        <div className='content'>
+          <div className='header'>
+            {currentModel.name}
+            <span className='type'>{` ${selectedModel.name}`}</span>
+            <div className='color'>{selectedModel.selectedColor.name}</div>
+          </div>
+          <img className='carPreview' src={selectedModel.selectedColor.imageUrl} alt={selectedModel.name} />
+        </div>
+        <div className='sidebar'>
+          {SideBar}
+        </div>
+      </div>
     </MainLayout>
   )
 }
 
 const mapStateToProps = state => ({
-  currentModel: state.models.currentModel.asMutable({ deep:true }),
+  currentModel: state.models.currentModel.asMutable({ deep: true }),
   selectedModel: state.models.selectedModel,
   globalLoading: state.models.globalLoading,
 })

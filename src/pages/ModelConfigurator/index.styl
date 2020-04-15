@@ -1,28 +1,30 @@
 .ModelConfigurator
-  .ant-layout, .ant-layout-header
-    background #f1f3f2!important
-  .header
-    color #000
-    font-size 22px
-    font-weight 700
-    line-height normal
-    padding 60px 0px
-    .type, .color
-      font-weight 400
-    .color
-      font-size 16px
-  .sider
-    padding 64px
-    .title
-      font-size 22px
-      text-align center
-      padding-bottom 32px
-    .price
-      color #737780
-      font-size 15px
-      font-weight 400
-      text-transform lowercase
-  .carPreview
-    width 100%
-    object-fit contain
-    margin-top 50px
+  .contentWrapper
+    display flex
+    flex-direction column
+    min-height 100vh
+    @media screen and (min-width: 992px)
+      flex-direction row
+    .content
+      background-color #f1f3f2
+      width 100%
+      @media screen and (min-width: 992px)
+        width 65%
+      .header
+        color #000
+        font-size 22px
+        font-weight 700
+        line-height normal
+        padding 60px 40px
+        .type, .color
+          font-weight 400
+        .color
+          font-size 16px
+      .carPreview
+        width 100%
+        object-fit contain
+        margin-top 50px
+    .sidebar
+      width 100%
+      @media screen and (min-width: 992px)
+        width 35%

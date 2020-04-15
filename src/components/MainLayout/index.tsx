@@ -6,23 +6,14 @@ interface MainLayoutProps {
   spinnning?: boolean,
   className?: string,
   children?: any,
-  header?: any,
-  sider?: any,
 }
 
-const MainLayout = ({ spinnning, children, className, header, sider }: MainLayoutProps) => {
+const MainLayout = ({ spinnning, children, className }: MainLayoutProps) => {
   return (
-      <Layout className={`MainLayout ${className}`}>
-        <Layout>
-          {header && <Layout.Header>{header}</Layout.Header>}
-          <Layout.Content>
-            <Spin spinning={spinnning} size='large'>
-              {children}
-            </Spin>
-          </Layout.Content>
-          {/*<Layout.Footer>Footer</Layout.Footer>*/}
-        </Layout>
-        {sider && <Layout.Sider width='35%' theme='light'>{sider}</Layout.Sider>}
+      <Layout className={`MainLayout`}>
+        <Spin spinning={spinnning} size='large'>
+          <Layout.Content className={className}>{children}</Layout.Content>
+        </Spin>
       </Layout>
   )
 }

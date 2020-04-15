@@ -14,9 +14,9 @@ const ModelsList = ({ globalLoading, dispatch, modelsList }) => {
     !modelsList.length && dispatch(getModelsList())
   }, [])
 
-  const header = <div className='title'>CHOOSE YOUR NEW CAR</div>
   return (
-    <MainLayout className='ModelsList' spinnning={globalLoading} header={header}>
+    <MainLayout className='ModelsList' spinnning={globalLoading}>
+      <div className='title'>CHOOSE YOUR NEW CAR</div>
       <Row gutter={32}>
         {modelsList.map(itm => <SingleModel { ...itm } key={itm.code}/>)}
       </Row>
