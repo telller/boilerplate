@@ -25,6 +25,18 @@
         object-fit contain
         margin-top 50px
     .sidebar
+      display flex
+      flex-direction column
+      justify-content space-between
       width 100%
       @media screen and (min-width: 992px)
         width 35%
+      .siderNavigation
+        padding 8px 16px
+        display flex
+        justify-content space-between
+        font-size 30px
+        .prev, .next
+          padding 10px 23px
+        .next
+          background #007edb
