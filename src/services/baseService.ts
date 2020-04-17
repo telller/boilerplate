@@ -1,7 +1,5 @@
 // import { notification } from 'antd'
-import { get } from 'lodash'
-
-const getUrl = (url) => `${process.env.BASE_URL}/${url}`
+// import { get } from 'lodash'
 
 // const makeQuery = (params = {}) => {
 //   const result = Object.keys(params)
@@ -35,7 +33,9 @@ const getUrl = (url) => `${process.env.BASE_URL}/${url}`
 // throw new ServiceError(`${title} ${description}`, errors)
 // }
 
-const makeRequest = async (path = '', options = {}, json = true, text, isHeaders = false) => {
+const getUrl = url => `${process.env.BASE_URL}/${url}`
+
+const makeRequest = async (path: string = '', options: any = {}, json: boolean = true, text?: boolean, isHeaders?: boolean) => {
   options = {
     method: 'GET',
     headers: {
@@ -60,7 +60,7 @@ const makeRequest = async (path = '', options = {}, json = true, text, isHeaders
   return response
 }
 
-const makePostRequest = async (path, data, responseAsJson = false) => {
+const makePostRequest = async (path: string, data: any, responseAsJson: boolean = false) => {
   const options = {
     method: 'POST',
     headers: {
@@ -72,7 +72,7 @@ const makePostRequest = async (path, data, responseAsJson = false) => {
   return await makeRequest(path, options, responseAsJson)
 }
 
-const makePutRequest = async (path, data, responseAsJson = false) => {
+const makePutRequest = async (path: string, data: any, responseAsJson: boolean = false) => {
   const options = {
     method: 'PUT',
     headers: {
@@ -83,7 +83,7 @@ const makePutRequest = async (path, data, responseAsJson = false) => {
   return await makeRequest(path, options, responseAsJson)
 }
 
-const makePatchRequest = async (path, data, responseAsJson = false) => {
+const makePatchRequest = async (path: string, data: any, responseAsJson: boolean = false) => {
   const options = {
     method: 'PATCH',
     headers: {
@@ -94,7 +94,7 @@ const makePatchRequest = async (path, data, responseAsJson = false) => {
   return await makeRequest(path, options, responseAsJson)
 }
 
-const makeDeleteRequest = async (path, responseAsJson = false) => {
+const makeDeleteRequest = async (path: string, data: any, responseAsJson: boolean = false) => {
   const options = {
     method: 'DELETE',
     headers: {},
