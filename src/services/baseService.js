@@ -64,6 +64,7 @@ const makePostRequest = async (path, data, responseAsJson = false) => {
   const options = {
     method: 'POST',
     headers: {
+      'X-API-KEY': process.env.X_API_KEY,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data || {}),

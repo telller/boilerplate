@@ -11,7 +11,7 @@ interface MainLayoutProps {
 const MainLayout = ({ spinnning, children, className }: MainLayoutProps) => {
   return (
       <Layout className={`MainLayout`}>
-        <Spin spinning={spinnning} size='large'>
+        <Spin spinning={spinnning || false} size='large'>
           <Layout.Content className={className}>{children}</Layout.Content>
         </Spin>
       </Layout>

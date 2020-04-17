@@ -35,3 +35,8 @@ export const getModelByCode = (code) => async (dispatch) => {
 export const setSelectedModel = (selectedModel) => (dispatch) => {
   dispatch({ type: types.SET_SELECTED_MODEL, payload: { selectedModel } })
 }
+
+export const toogleGlobalLoading = () => (dispatch, getState) => {
+  const globalLoading = !getState().models.globalLoading
+  dispatch({ type: types.TOOGLE_GLOBAL_LOADING, payload: { globalLoading } })
+}

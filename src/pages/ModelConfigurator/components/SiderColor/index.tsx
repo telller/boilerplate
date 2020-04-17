@@ -15,15 +15,15 @@ const SiderColor = ({ setSelModel, selectedModel }) => (
     <div className='title'>CHOOSE EQUIPMENT LEVEL</div>
     <Row gutter={32}>
       {map(sortBy(selectedModel.colors, 'price'), itm => (
-        <Col 
+        <Col
           className={clname('colorItem', { 'colorItem-active': itm.name === selectedModel.selectedColor.name })}
           onClick={() => setSelModel({ selectedColor: itm })}
-          key={itm.name} 
-          xs={24} 
-          md={12} 
+          key={itm.name}
+          xs={12}
+          md={12}
           xl={8}
         >
-          <img className='imageWrapper' src={itm.iconUrl} />
+          <img className='imageWrapper' src={itm.iconUrl} alt={itm.name} title={itm.name} />
           {itm.name}
           <div className='price'>{`+${toCurency(itm.price)}`}</div>
         </Col>

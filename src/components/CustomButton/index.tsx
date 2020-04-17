@@ -1,4 +1,4 @@
-import { Button } from 'antd'
+import clname from 'classnames'
 import React from 'react'
 import './index.styl'
 
@@ -10,9 +10,9 @@ interface CustomButtonProps {
 
 const CustomButton = ({ active, children, onClick }: CustomButtonProps) => {
   return (
-      <Button className={`CustomButton ${active ? '-active' : ''}`} onClick={onClick}>
+      <button className={clname('CustomButton', { 'CustomButton-active': active })} onClick={onClick}>
         {children}
-      </Button>
+      </button>
   )
 }
 

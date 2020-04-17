@@ -1,0 +1,23 @@
+.NavigationBar
+  padding 10px 18px
+  display flex
+  justify-content space-between
+  font-size 16px
+  position fixed
+  bottom 0
+  width 100%
+  backdrop-filter blur(10px)
+  background rgba(255, 255, 255, .5)
+  .prev, .next
+    transition all .3s ease-in-out
+    padding 16px 24px
+    color #fff
+    cursor pointer
+    &:hover
+      opacity .8
+  .prev
+    transform rotate(180deg)
+  .next
+    background #007edb
+  @media screen and (min-width: 992px)
+    position static
