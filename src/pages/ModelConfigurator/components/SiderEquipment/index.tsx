@@ -1,3 +1,4 @@
+import { selectedModel, currentModel } from 'store/models/types'
 import { CustomButton } from 'components'
 import { sortBy, map } from 'lodash'
 import { toCurency } from 'helpers'
@@ -5,7 +6,13 @@ import { minBy } from 'lodash'
 import React from 'react'
 import './index.styl'
 
-const SiderEquipment = ({ setSelModel, currentModel, selectedModel }) => (
+interface SingleModelProps {
+  selectedModel: selectedModel
+  currentModel: currentModel
+  setSelModel: (any) => any
+}
+
+export default ({ setSelModel, currentModel, selectedModel }: SingleModelProps) => (
   <div className='SiderEquipment'>
     <div className='title'>CHOOSE EQUIPMENT LEVEL</div>
     {map(sortBy(currentModel.trims, 'price'), itm => (
@@ -19,5 +26,3 @@ const SiderEquipment = ({ setSelModel, currentModel, selectedModel }) => (
     ))}
   </div>
 )
-
-export default SiderEquipment

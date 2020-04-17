@@ -1,16 +1,19 @@
 import { getModelByCode, setSelectedModel, toogleGlobalLoading } from 'store/models/actions'
 import { SiderEquipment, SiderColor, NavigationBar } from './components'
 import { useHistory, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { leadModel } from 'services/models.service'
 import React, { useEffect } from 'react'
 import { MainLayout } from 'components'
-import { connect } from 'react-redux'
 import { toCurency } from 'helpers'
+import RootState from 'store/types'
 import './index.styl'
 
-const ModelConfigurator = ({ dispatch, currentModel, globalLoading, selectedModel }) => {
+export default () => {
+  const { currentModel, selectedModel, globalLoading } = useSelector((state: RootState ) => state.models)
   const { location, push } = useHistory()
   const { carCode } = useParams()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if ((currentModel || {}).code !== carCode) {
@@ -61,10 +64,3 @@ const ModelConfigurator = ({ dispatch, currentModel, globalLoading, selectedMode
     </MainLayout>
   )
 }
-
-const mapStateToProps = state => ({
-  currentModel: state.models.currentModel.asMutable({ deep: true }),
-  selectedModel: state.models.selectedModel,
-  globalLoading: state.models.globalLoading,
-})
-export default connect(mapStateToProps)(ModelConfigurator)

@@ -3,17 +3,15 @@ import React from 'react'
 import './index.styl'
 
 interface CustomButtonProps {
+  onClick?: () => any
   active?: boolean
   children?: any
-  onClick: any
 }
 
-const CustomButton = ({ active, children, onClick }: CustomButtonProps) => {
-  return (
-    <button className={clname('CustomButton', { 'CustomButton-active': active })} onClick={onClick}>
-      {children}
-    </button>
-  )
-}
+const CustomButton = ({ active, children, onClick }: CustomButtonProps) => (
+  <button className={clname('CustomButton', { 'CustomButton-active': active })} onClick={onClick}>
+    {children}
+  </button>
+)
 
 export default CustomButton

@@ -2,7 +2,11 @@ import { Link, useLocation, useParams } from 'react-router-dom'
 import React from 'react'
 import './index.styl'
 
-const NavigationBar = ({ handleProceed }) => {
+interface NavigationBarProps {
+  handleProceed: (any) => any
+}
+
+export default ({ handleProceed }: NavigationBarProps) => {
   const { pathname } = useLocation()
   const { carCode } = useParams()
 
@@ -24,5 +28,3 @@ const NavigationBar = ({ handleProceed }) => {
     </div>
   )
 }
-
-export default NavigationBar

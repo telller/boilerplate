@@ -1,13 +1,16 @@
+import { useDispatch, useSelector } from 'react-redux'
 import { getModelsList } from 'store/models/actions'
 import React, { useEffect } from 'react'
 import { MainLayout } from 'components'
 import SingleModel from './SingleModel'
-import { connect } from 'react-redux'
-
+import RootState from 'store/types'
 import { Row } from 'antd'
 import './index.styl'
 
-const ModelsList = ({ globalLoading, dispatch, modelsList }) => {
+export default () => {
+  const { modelsList, globalLoading } = useSelector((state: RootState ) => state.models)
+  const dispatch = useDispatch()
+
   useEffect(() => {
     !modelsList.length && dispatch(getModelsList())
   }, [])
@@ -23,9 +26,3 @@ const ModelsList = ({ globalLoading, dispatch, modelsList }) => {
     </MainLayout>
   )
 }
-
-const mapStateToProps = state => ({
-  globalLoading: state.models.globalLoading,
-  modelsList: state.models.modelsList,
-})
-export default connect(mapStateToProps)(ModelsList)

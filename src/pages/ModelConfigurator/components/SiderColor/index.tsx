@@ -1,3 +1,4 @@
+import { selectedModel } from 'store/models/types'
 import { sortBy, map } from 'lodash'
 import { toCurency } from 'helpers'
 import { Row, Col } from 'antd'
@@ -6,11 +7,11 @@ import React from 'react'
 import './index.styl'
 
 interface SiderColorProps {
-  setSelModel: Function
-  selectedModel: {}
+  selectedModel: selectedModel
+  setSelModel: (any) => any
 }
 
-const SiderColor = ({ setSelModel, selectedModel }) => (
+export default ({ setSelModel, selectedModel }: SiderColorProps ) => (
   <div className='SiderColor'>
     <div className='title'>CHOOSE EQUIPMENT LEVEL</div>
     <Row gutter={32}>
@@ -30,5 +31,3 @@ const SiderColor = ({ setSelModel, selectedModel }) => (
     </Row>
   </div>
 )
-
-export default SiderColor

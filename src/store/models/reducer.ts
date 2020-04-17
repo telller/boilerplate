@@ -1,8 +1,8 @@
 import Immutable from 'seamless-immutable'
 import * as types from './types'
 
-const initialState = Immutable({
-  selectedModel: { name: '', price: '', colors: [], selectedColor: { name: '', price: '', imageUrl: '', iconUrl: '' } },
+const initialState: types.Models = Immutable({
+  selectedModel: { name: '', price: 0, colors: [], selectedColor: { name: '', price: '', imageUrl: '', iconUrl: '' } },
   globalLoading: false,
   currentModel: {},
   modelsList: [],
