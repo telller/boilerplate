@@ -32,7 +32,6 @@ const ModelConfigurator = ({ dispatch, currentModel, globalLoading, selectedMode
       dispatch(toogleGlobalLoading())
       push(`/models/${carCode}/failed`)
     }
-
   }
 
   const setSelModel = selModel => dispatch(setSelectedModel(selModel))
@@ -41,18 +40,21 @@ const ModelConfigurator = ({ dispatch, currentModel, globalLoading, selectedMode
     <MainLayout className='ModelConfigurator' spinnning={globalLoading}>
       <div className='contentWrapper'>
         <div className='content'>
-          <img className='carPreview' src={selectedModel.selectedColor.imageUrl} alt={selectedModel.name} title={selectedModel.name} />
+          <img
+            className='carPreview'
+            src={selectedModel.selectedColor.imageUrl}
+            alt={selectedModel.name}
+            title={selectedModel.name}
+          />
           <div className='carInfo'>
             {currentModel.name}
             <span className='type'>{` ${selectedModel.name}`}</span>
             <div className='color'>{selectedModel.selectedColor.name}</div>
           </div>
-          <div className='carPrice'>
-            {toCurency(selectedModel.selectedColor.price + selectedModel.price)}
-          </div>
+          <div className='carPrice'>{toCurency(selectedModel.selectedColor.price + selectedModel.price)}</div>
         </div>
         <div className='sidebar'>
-          {location.pathname.includes('trim') ? <SiderEquipment { ...siderProps } /> : <SiderColor { ...siderProps } />}
+          {location.pathname.includes('trim') ? <SiderEquipment {...siderProps} /> : <SiderColor {...siderProps} />}
           <NavigationBar handleProceed={handleProceed} />
         </div>
       </div>

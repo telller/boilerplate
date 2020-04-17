@@ -6,7 +6,7 @@ import React from 'react'
 import './index.styl'
 
 interface SiderColorProps {
-  setSelModel: Function,
+  setSelModel: Function
   selectedModel: {}
 }
 
@@ -21,8 +21,7 @@ const SiderColor = ({ setSelModel, selectedModel }) => (
           key={itm.name}
           xs={12}
           md={12}
-          xl={8}
-        >
+          xl={8}>
           <img className='imageWrapper' src={itm.iconUrl} alt={itm.name} title={itm.name} />
           {itm.name}
           <div className='price'>{`+${toCurency(itm.price)}`}</div>

@@ -5,10 +5,10 @@ import React from 'react'
 import './index.styl'
 
 interface SingleModelProps {
-  priceFrom: string,
-  imageUrl: string,
-  name: string,
-  code: string,
+  priceFrom: string
+  imageUrl: string
+  name: string
+  code: string
 }
 
 const SingleModel = ({ code, name, imageUrl, priceFrom }: SingleModelProps) => (

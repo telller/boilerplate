@@ -17,7 +17,9 @@ const NavigationBar = ({ handleProceed }) => {
           <img src='/public/img/arrowRight.svg' alt='arrowRight' />
         </Link>
       ) : (
-        <div className='next' onClick={handleProceed}>PROCEED</div>
+        <div className='next' onClick={handleProceed}>
+          PROCEED
+        </div>
       )}
     </div>
   )

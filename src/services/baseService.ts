@@ -35,7 +35,13 @@
 
 const getUrl = url => `${process.env.BASE_URL}/${url}`
 
-const makeRequest = async (path: string = '', options: any = {}, json: boolean = true, text?: boolean, isHeaders?: boolean) => {
+const makeRequest = async (
+  path: string = '',
+  options: any = {},
+  json: boolean = true,
+  text?: boolean,
+  isHeaders?: boolean
+) => {
   options = {
     method: 'GET',
     headers: {

@@ -1,8 +1,8 @@
 import { makeRequest, makePostRequest } from './baseService'
 
 interface LeadDataModel {
-  modelName: 'string',
-  trimName: 'string',
+  modelName: 'string'
+  trimName: 'string'
   colorName: 'string'
 }
 
