@@ -10,7 +10,7 @@ const App = () => (
     <Route exact path='/models/:carCode/trim' component={ModelConfigurator} />
     <Route exact path='/models/:carCode/color' component={ModelConfigurator} />
     <Route exact path='/models/:carCode/success' component={Check} />
-    <Route exact path='/models/:carCode/failed' component={Check} />
+    <Route exact path='/models/:carCode/failure' component={Check} />
   </Switch>
 )
 

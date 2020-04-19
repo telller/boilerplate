@@ -5,10 +5,12 @@ import './index.styl'
 
 export default () => {
   const { pathname } = useLocation()
+  const isOk = pathname.includes('success')
+  const status = isOk ? 'Success' : 'Failure'
   return (
     <MainLayout className='Check'>
       <div className='imgWrapper'>
-        <img src={`/public/img/${pathname.includes('success') ? 'success' : 'fail'}.svg`} alt='checkIcon' />
+        <img src={`/public/img/${isOk ? 'success' : 'fail'}.svg`} alt={status} title={status} />
       </div>
     </MainLayout>
   )

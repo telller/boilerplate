@@ -15,9 +15,9 @@ export default ({ setSelModel, selectedModel }: SiderColorProps ) => (
   <div className='SiderColor'>
     <div className='title'>CHOOSE EQUIPMENT LEVEL</div>
     <Row gutter={32}>
-      {map(sortBy(selectedModel.colors, 'price'), itm => (
+      {map(sortBy(selectedModel?.colors, 'price'), itm => (
         <Col
-          className={clname('colorItem', { 'colorItem-active': itm.name === selectedModel.selectedColor.name })}
+          className={clname('colorItem', { 'colorItem-active': itm.name === selectedModel?.selectedColor?.name })}
           onClick={() => setSelModel({ selectedColor: itm })}
           key={itm.name}
           xs={12}

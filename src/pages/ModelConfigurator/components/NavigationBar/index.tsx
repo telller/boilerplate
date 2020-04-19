@@ -17,11 +17,11 @@ export default ({ handleProceed }: NavigationBarProps) => {
         <img src='/public/img/arrowLeft.svg' alt='arrowLeft' />
       </Link>
       {isTrim ? (
-        <Link className='next' to={`/models/${carCode}/color`}>
+        <Link className='next nextIcon' to={`/models/${carCode}/color`}>
           <img src='/public/img/arrowRight.svg' alt='arrowRight' />
         </Link>
       ) : (
-        <div className='next' onClick={handleProceed}>
+        <div className='next proceedBtn' onClick={handleProceed}>
           PROCEED
         </div>
       )}
